@@ -47,8 +47,7 @@ public class GunComponent : MonoBehaviour
     Rigidbody rb = bullet.GetComponent<Rigidbody>();
 
     // Calculate impulse based on charge time.
-    float chargeRatio = chargeTime / maxChargeTime;
-    float bulletImpulse = bulletMaxImpulse * chargeRatio;
+    float bulletImpulse = (chargeTime / maxChargeTime) * bulletMaxImpulse;
 
     // Apply force to the bullet in a forward direction of the gun.
     rb.AddForce(bulletSpawnPoint.forward * bulletImpulse, ForceMode.Impulse);
