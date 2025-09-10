@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8301129308217743349}
   - component: {fileID: 521900895752086034}
   - component: {fileID: 1465612805311038164}
-  - component: {fileID: 4834305943974490725}
+  - component: {fileID: -6736488961170059773}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Projectile
@@ -134,7 +134,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4834305943974490725
+--- !u!114 &-6736488961170059773
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
