@@ -32,8 +32,8 @@ public class GunComponent : MonoBehaviour
         // When the player releases the fire button, shoot the bullet
         if (Input.GetButtonUp("Fire1"))
         {
-            isCharging = false; // stop charging
             ShootBullet(); // Fire the Bullet
+            isCharging = false; // stop charging
         }
     }
 
@@ -46,12 +46,13 @@ public class GunComponent : MonoBehaviour
     // Get the RigidBody Component from the bullet.
     Rigidbody rb = bullet.GetComponent<Rigidbody>();
 
-    // Calculate impulse based on charge time.
-    float chargeRatio = chargeTime / maxChargeTime;
-    float bulletImpulse = bulletMaxImpulse * chargeRatio;
+        // Calculate impulse based on charge time.
+        // float chargeRatio = chargeTime / maxChargeTime;
+        // float bulletImpulse = bulletMaxImpulse * chargeRatio;
+        float bulletImpulse = (chargeTime / maxChargeTime) * bulletMaxImpulse;
 
     // Apply force to the bullet in a forward direction of the gun.
-    rb.AddForce(bulletSpawnPoint.forward * bulletImpulse, ForceMode.Impulse);
+        rb.AddForce(bulletSpawnPoint.forward * bulletImpulse, ForceMode.Impulse);
 }
 
    
