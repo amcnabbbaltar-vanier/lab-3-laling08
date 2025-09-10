@@ -16,7 +16,7 @@ public class GunComponent : MonoBehaviour
         // Task 4:
 
         // Detect when the player starts holding the fire button.
-        if (Input.GetButtonUp("Fire1"))
+        if (Input.GetButtonDown("Fire1"))
         {
             chargeTime = 0.0f;
             isCharging = true;
