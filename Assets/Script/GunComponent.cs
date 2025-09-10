@@ -12,9 +12,28 @@ public class GunComponent : MonoBehaviour
     void Update()
     {
         // TO DO: Add the logic to track player by keeping the input down.
+
+        // Task 4:
+
+        // Detect when the player starts holding the fire button.
         if (Input.GetButtonUp("Fire1"))
         {
-            ShootBullet();
+            chargeTime = 0.0f;
+            isCharging = true;
+        }
+
+        // While the fire button is held down, increasse charge time
+        if (Input.GetButton("Fire1") && isCharging)
+        {
+            chargeTime += Time.deltaTime; // accumulate time
+            chargeTime = Mathf.Clamp(chargeTime, 0, maxChargeTime); // limit charge time
+        }
+
+        // When the player releases the fire button, shoot the bullet
+        if (Input.GetButtonUp("Fire1") && isCharging)
+        {
+            isCharging = false; // stop charging
+            ShootBullet(); // Fire the Bullet
         }
     }
 
@@ -26,9 +45,10 @@ public class GunComponent : MonoBehaviour
     
     // Get the RigidBody Component from the bullet.
     Rigidbody rb = bullet.GetComponent<Rigidbody>();
-    
 
-    float bulletImpulse = bulletMaxImpulse;
+    // Calculate impulse based on charge time.
+    float chargeRatio = chargeTime / maxChargeTime;
+    float bulletImpulse = bulletMaxImpulse * chargeRatio;
 
     // Apply force to the bullet in a forward direction of the gun.
     rb.AddForce(bulletSpawnPoint.forward * bulletImpulse, ForceMode.Impulse);
