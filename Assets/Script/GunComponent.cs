@@ -23,14 +23,14 @@ public class GunComponent : MonoBehaviour
         }
 
         // While the fire button is held down, increasse charge time
-        if (Input.GetButton("Fire1") && isCharging)
+        if (Input.GetButton("Fire1") )
         {
             chargeTime += Time.deltaTime; // accumulate time
             chargeTime = Mathf.Clamp(chargeTime, 0, maxChargeTime); // limit charge time
         }
 
         // When the player releases the fire button, shoot the bullet
-        if (Input.GetButtonUp("Fire1") && isCharging)
+        if (Input.GetButtonUp("Fire1"))
         {
             isCharging = false; // stop charging
             ShootBullet(); // Fire the Bullet
